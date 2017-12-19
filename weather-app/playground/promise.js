@@ -4,7 +4,7 @@ var asyncAdd =  (a, b) => {
       if(typeof a === 'number' && typeof b === 'number'){
         resolve(a + b);
       } else {
-        reject('Argument mus be numbers');
+        reject('Argument must be numbers');
       }
     }, 1500);
   });
@@ -12,11 +12,12 @@ var asyncAdd =  (a, b) => {
 
 asyncAdd(5, 7).then((res) => {
   console.log('Result:', res);
+  return asyncAdd(res, 33);
 }, (errorMessage) => {
   console.log(errorMessage);
 }).then((res) => {
   console.log('Should be 45', res);
-}, (errorMessage) => {
+}).catch((errorMessage) => {
   console.log(errorMessage)
 });
 
